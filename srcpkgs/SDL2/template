@@ -19,7 +19,7 @@ checksum=01215ffbc8cfc4ad165ba7573750f15ddda1f971d5a66e9dcaffd37c587f473a
 
 # Package build options
 build_options="gles opengl pulseaudio pipewire sndio vulkan wayland x11"
-build_options_default="gles opengl pulseaudio sndio vulkan wayland x11"
+build_options_default="gles pulseaudio vulkan wayland"
 
 case "$XBPS_TARGET_MACHINE" in
 	ppcle*) ;;

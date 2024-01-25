@@ -3,6 +3,8 @@ pkgname=yambar
 version=1.11.0
 revision=1
 build_style=meson
+configure_args="-Dbackend-x11=disabled -Dplugin-alsa=disabled  -Dplugin-xkb=disabled
+ -Dplugin-pulse=disabled -Dplugin-dwl=disabled -Dplugin-river=disabled"
 hostmakedepends="flex pkg-config scdoc wayland-devel"
 makedepends="alsa-lib-devel eudev-libudev-devel libxcb-devel libyaml-devel
  pixman-devel fcft-devel json-c-devel libmpdclient-devel tllist wayland-devel

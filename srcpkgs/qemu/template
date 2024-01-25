@@ -35,7 +35,7 @@ nostrip_files="hppa-firmware.img openbios-ppc openbios-sparc32 openbios-sparc64
  opensbi-riscv64-generic-fw_dynamic.elf"
 
 build_options="gtk3 iscsi jack numa opengl pulseaudio sdl2 smartcard spice virgl"
-build_options_default="gtk3 iscsi jack numa opengl pulseaudio sdl2 smartcard spice virgl"
+build_options_default="gtk3 iscsi 'numa pulseaudio smartcard spice virgl"
 desc_option_sdl2="Enable SDL (2.x) video output"
 desc_option_spice="Enable support for SPICE"
 desc_option_virgl="Enable support for VirGL (A Virtual 3D GPU renderer)"

@@ -5,17 +5,17 @@ revision=1
 build_style=meson
 configure_args="-Djack=enabled -Dlirc=disabled -Dhal-compat=false -Dorc=enabled
  -Dgtk=disabled -Dsystemd=disabled -Dwebrtc-aec=enabled
- -Dgsettings=enabled -Dbluez5=enabled
+ -Dgsettings=enabled -Dbluez5=enabled -Dx11=disabled
  -Dbluez5-ofono-headset=false -Dbluez5-native-headset=true
  -Delogind=enabled -Dudevrulesdir=/usr/lib/udev/rules.d
  -Dbashcompletiondir=/usr/share/bash-completion/completions"
 hostmakedepends="cmake m4 gettext libtool orc-devel perl-XML-Parser pkg-config
  doxygen"
 makedepends="$(vopt_if avahi avahi-libs-devel) eudev-libudev-devel fftw-devel jack-devel
- libSM-devel libXtst-devel libasyncns-devel libbluetooth-devel
- libcap-devel libcap-progs libglib-devel libltdl-devel openssl-devel
- libsndfile-devel libsoxr-devel orc-devel sbc-devel speex-devel tdb-devel
- webrtc-audio-processing-devel xcb-util-devel check-devel elogind-devel"
+ libasyncns-devel libbluetooth-devel libcap-devel libcap-progs libglib-devel
+ libltdl-devel openssl-devel libsndfile-devel libsoxr-devel
+ orc-devel sbc-devel speex-devel tdb-devel webrtc-audio-processing-devel
+ check-devel elogind-devel"
 depends="pulseaudio-utils>=${version}_${revision} rtkit"
 conf_files="/etc/pulse/*"
 short_desc="Featureful, general-purpose sound server"
@@ -80,7 +80,7 @@ pulseaudio-utils_package() {
 	short_desc+=" - utilities"
 	pkg_install() {
 		for b in pacat pacmd pactl padsp pamon paplay parec \
-				 parecord pasuspender pax11publish; do
+				 parecord pasuspender; do
 			vmove usr/bin/$b
 			vmove usr/share/man/man1/${b}.1
 		done

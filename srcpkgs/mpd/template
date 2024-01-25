@@ -57,7 +57,7 @@ desc_option_openal="Enable OpenAL output plugin"
 desc_option_io_uring="Enable support for using liburing"
 desc_option_pipewire="Enable Pipewire output plugin"
 desc_option_openmpt="Enable OpenMPT decoder plugin"
-build_options_default="jack pulseaudio libao sndio cdio shoutcast pipewire"
+build_options_default="pipewire"
 
 if [ "$XBPS_CHECK_PKGS" ]; then
 	configure_args+=" -Dtest=true"

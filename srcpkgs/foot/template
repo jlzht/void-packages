@@ -13,7 +13,7 @@ license="MIT"
 homepage="https://codeberg.org/dnkl/foot"
 changelog="https://codeberg.org/dnkl/foot/raw/branch/master/CHANGELOG.md"
 distfiles="https://codeberg.org/dnkl/foot/archive/${version}.tar.gz"
-checksum=0e02af376e5f4a96eeb90470b7ad2e79a1d660db2a7d1aa772be43c7db00e475
+checksum=8060ec28cbf6e2e3d408665330da4bc48fd094d4f1265d7c58dc75c767463c29
 conf_files="/etc/xdg/foot/foot.ini"
 
 post_install() {

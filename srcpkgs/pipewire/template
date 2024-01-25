@@ -17,6 +17,8 @@ configure_args="
  -Dbluez5-codec-lc3plus=disabled
  -Dsession-managers=[]
  -Drlimits-match=@_pipewire
+ -Dx11=disabled
+ -Dx11-xfixes=disabled
  $(vopt_feature ffado libffado)
  $(vopt_feature selinux selinux)
 "

@@ -15,7 +15,7 @@ hostmakedepends="pkg-config perl"
 makedepends="zlib-devel bzip2-devel freetype-devel alsa-lib-devel libXfixes-devel
  libXext-devel libXvMC-devel libxcb-devel lame-devel libtheora-devel
  libvorbis-devel x264-devel xvidcore-devel jack-devel SDL2-devel
- libcdio-paranoia-devel librtmp-devel libmodplug-devel gnutls-devel
+ librtmp-devel libmodplug-devel gnutls-devel
  speex-devel celt-devel harfbuzz-devel libass-devel opus-devel ocl-icd-devel
  libbs2b-devel libvidstab-devel vmaf-devel $(vopt_if pulseaudio pulseaudio-devel)
  $(vopt_if vaapi libva-devel) $(vopt_if vdpau libvdpau-devel)
@@ -32,7 +32,7 @@ depends="ffplay>=${version}_${revision}"
 
 build_options="x265 v4l2 vaapi vdpau vpx fdk_aac aom nvenc sndio pulseaudio
  dav1d zimg webp sofa vulkan drm svtav1 srt rist nvdec"
-build_options_default="x265 v4l2 vpx aom sndio pulseaudio dav1d webp vulkan drm srt rist"
+build_options_default="x265 v4l2 vpx aom pulseaudio dav1d webp vulkan drm srt rist"
 desc_option_srt="Enable support for SRT (Secure, Reliable, Transport)"
 desc_option_rist="Enable support for RIST (Reliable Internet Stream Transport)"
 desc_option_sofa="Enable support for AES SOFA"
@@ -41,7 +41,7 @@ desc_option_webp="Enable support for WebP"
 case "$XBPS_TARGET_MACHINE" in
 	i686*|x86_64*)
 		hostmakedepends+=" nasm"
-		build_options_default+=" vaapi vdpau nvenc nvdec"
+		build_options_default+=" vaapi"
 		;;
 	ppc64*) build_options_default+=" vaapi vdpau";;
 	mips*) CFLAGS="-mnan=legacy";;
@@ -101,7 +101,7 @@ do_configure() {
 
 	./configure --prefix=/usr --disable-debug --enable-gpl --enable-gnutls \
 		--disable-stripping \
-		--enable-libcdio --enable-version3 --enable-runtime-cpudetect \
+		--disable-libcdio --enable-version3 --enable-runtime-cpudetect \
 		--enable-libmp3lame --enable-libvorbis --enable-libxvid \
 		--enable-libx264 $(vopt_enable vpx libvpx) --enable-libtheora \
 		--enable-shared --enable-static --enable-libxcb \
@@ -126,7 +126,11 @@ do_configure() {
 		$(vopt_enable srt libsrt) \
 		$(vopt_enable rist librist) \
 		$(vopt_if nvenc '--enable-nvenc') \
-		$(vopt_if nvdec '--enable-nvdec')
+		$(vopt_if nvdec '--enable-nvdec') \
+    --disable-xlib \
+    --disable-libxcb \
+    --disable-libxcb-shm \
+    --disable-libxcb-xfixes
 }
 
 do_build() {

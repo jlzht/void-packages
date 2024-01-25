@@ -6,9 +6,9 @@ build_helper="gir"
 build_style=meson
 configure_args="-Dpackage-origin=https://voidlinux.org -Ddoc=disabled
  -Dopencv=disabled -Dmsdk=disabled -Dopensles=disabled -Dtinyalsa=disabled
- -Dwasapi=disabled -Dnvcodec=disabled -Ddc1394=disabled
+ -Dwasapi=disabled -Dnvcodec=disabled -Ddc1394=disabled -Dx11=disabled
  -Diqa=disabled -Dkate=disabled -Dlibde265=disabled -Dmpeg2enc=disabled
- -Dmplex=disabled -Dmusepack=disabled -Dopenexr=disabled
+   -Dmplex=disabled -Dmusepack=disabled -Dopenexr=disabled -Dzbar=disabled
  -Dopenh264=disabled -Dopenmpt=disabled -Dopenni2=disabled -Dsctp=disabled
  -Dsrt=disabled -Dteletext=disabled -Dvoaacenc=disabled -Dvoamrwbenc=disabled
  -Dwildmidi=disabled -Dwpe=disabled -Ddirectfb=disabled
@@ -17,18 +17,17 @@ hostmakedepends="automake gettext libtool pkg-config python3 glib-devel
  orc $(vopt_if wayland wayland-devel)"
 makedepends="alsa-lib-devel celt-devel openssl-devel exempi-devel
  gst-plugins-base1-devel libdca-devel orc-devel libmms-devel
- libexif-devel libmpcdec-devel faac-devel SDL-devel libpng-devel
+ libexif-devel libmpcdec-devel faac-devel libpng-devel
  faad2-devel libdvdread-devel libdvdnav-devel librsvg-devel libsndfile-devel
  xvidcore-devel jasper-devel libmodplug-devel libcurl-devel lcms2-devel
- libvdpau-devel libgsm-devel librtmp-devel libass-devel libvpx-devel
- soundtouch-devel opus-devel libwebp-devel $(vopt_if wayland wayland-devel) x265-devel
+ libgsm-devel librtmp-devel libass-devel libvpx-devel soundtouch-devel opus-devel
+ libwebp-devel $(vopt_if wayland wayland-devel) x265-devel
  libsrtp-devel libopenal-devel gtk+3-devel libnice-devel libbluetooth-devel
  libgudev-devel libusb-devel libaom-devel libbs2b-devel chromaprint-devel
  fdk-aac-devel flite-devel fluidsynth-devel liblrdf-devel ladspa-sdk
  lilv-devel lv2 libopenjpeg2-devel sbc-devel spandsp-devel vulkan-loader
- Vulkan-Headers webrtc-audio-processing-devel libzbar-devel ffmpeg-devel
- srt-devel libva-devel
- $(vopt_if gme libgme-devel)"
+ Vulkan-Headers webrtc-audio-processing-devel ffmpeg-devel
+ srt-devel libva-devel $(vopt_if gme libgme-devel)"
 depends="gst-plugins-base1>=${version}"
 short_desc="GStreamer plugins from the bad set (v1.x)"
 maintainer="Orphaned <orphan@voidlinux.org>"

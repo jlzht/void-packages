@@ -3,6 +3,7 @@ pkgname=virglrenderer
 version=1.0.0
 revision=1
 build_style=meson
+configure_args="-Dplatforms=egl"
 hostmakedepends="pkg-config"
 makedepends="libepoxy-devel MesaLib-devel"
 short_desc="Virgl GL renderer library"

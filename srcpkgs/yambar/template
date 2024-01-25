@@ -3,6 +3,8 @@ pkgname=yambar
 version=1.10.0
 revision=1
 build_style=meson
+configure_args="-Dbackend-x11=disabled -Dplugin-alsa=disabled  -Dplugin-xkb=disabled
+ -Dplugin-pulse=disabled -Dplugin-dwl=disabled -Dplugin-river=disabled"
 hostmakedepends="flex pkg-config scdoc wayland-devel"
 makedepends="alsa-lib-devel eudev-libudev-devel libxcb-devel libyaml-devel
  pixman-devel fcft-devel json-c-devel libmpdclient-devel tllist wayland-devel
@@ -15,7 +17,7 @@ license="MIT"
 homepage="https://codeberg.org/dnkl/yambar"
 changelog="https://codeberg.org/dnkl/yambar/raw/branch/master/CHANGELOG.md"
 distfiles="https://codeberg.org/dnkl/yambar/archive/${version}.tar.gz"
-checksum=ebf08a17b77053f16038c1538fe9d410d06289b8ea28ff5a5022aca8e9b84807
+checksum=3c53d6fc245707d6ff6174395b03d7f069a48da9fb63b612c82d706c1c09b193
 
 do_check() {
 	xvfb-run ninja -C build/ test

@@ -47,7 +47,7 @@ else
 fi
 
 # Package build options
-build_options="broadway colord cups gir cloudproviders wayland x11 gtk_doc"
+build_options="colord cups gir wayland gtk_doc"
 desc_option_broadway="Enable support for the HTML5 Broadway backend"
 desc_option_cloudproviders="Enable integration with cloudproviders, such as Nextcloud"
 

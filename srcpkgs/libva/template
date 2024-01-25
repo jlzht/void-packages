@@ -4,7 +4,7 @@ pkgname=libva
 version=2.20.0
 revision=1
 build_style=meson
-configure_args="-Dwith_glx=no"
+configure_args="-Denable_docs=false -Dwith_x11=no -Dwith_glx=no"
 hostmakedepends="pkg-config $(vopt_if wayland wayland-devel)"
 makedepends="libXfixes-devel libXext-devel libdrm-devel
  $(vopt_if wayland 'libffi-devel wayland-devel')"

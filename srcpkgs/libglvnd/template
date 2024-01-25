@@ -3,8 +3,9 @@ pkgname=libglvnd
 version=1.7.0
 revision=1
 build_style=meson
+configure_args="-Dx11=disabled -Dglx=disabled"
 hostmakedepends="pkg-config"
-makedepends="libXext-devel libX11-devel xorgproto"
+makedepends=""
 checkdepends="xvfb-run"
 short_desc="GL Vendor-Neutral Dispatch library"
 maintainer="Orphaned <orphan@voidlinux.org>"

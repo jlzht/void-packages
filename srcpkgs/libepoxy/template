@@ -3,6 +3,7 @@ pkgname=libepoxy
 version=1.5.10
 revision=1
 build_style=meson
+configure_args="-Dx11=false -Dglx=no -Degl=yes"
 hostmakedepends="pkg-config xorg-util-macros"
 makedepends="MesaLib-devel"
 short_desc="Library for handling OpenGL function pointer management for you"

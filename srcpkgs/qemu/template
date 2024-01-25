@@ -29,7 +29,7 @@ checksum=d717acc2a52bbea72ea7283bca3292288f16ac510699fb02e112f6326f43daea
 ignore_elf_dirs="/usr/share/qemu"
 
 build_options="gtk3 iscsi jack numa opengl pulseaudio sdl2 smartcard spice virgl"
-build_options_default="gtk3 iscsi jack numa opengl pulseaudio sdl2 smartcard spice virgl"
+build_options_default="gtk3 iscsi 'numa pulseaudio smartcard spice virgl"
 desc_option_sdl2="Enable SDL (2.x) video output"
 desc_option_spice="Enable support for SPICE"
 desc_option_virgl="Enable support for VirGL (A Virtual 3D GPU renderer)"

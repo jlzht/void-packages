@@ -13,7 +13,7 @@ distfiles="https://www.ffmpeg.org/releases/ffmpeg-${version}.tar.xz"
 checksum=e80b380d595c809060f66f96a5d849511ef4a76a26b76eacf5778b94c3570309
 
 hostmakedepends="pkg-config perl"
-makedepends="zlib-devel bzip2-devel freetype-devel alsa-lib-devel libXfixes-devel
+makedepends="zlib-devel bzip2-devel freetype-devel alsa-lib-devel
  libXext-devel libXvMC-devel libxcb-devel lame-devel libtheora-devel
  libvorbis-devel x264-devel xvidcore-devel jack-devel SDL2-devel
  librtmp-devel libmodplug-devel gnutls-devel

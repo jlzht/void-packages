@@ -5,7 +5,7 @@ version=4.4.6
 revision=1
 metapackage=yes
 hostmakedepends="pkg-config perl"
-makedepends="zlib-devel bzip2-devel freetype-devel alsa-lib-devel libXfixes-devel
+makedepends="zlib-devel bzip2-devel freetype-devel alsa-lib-devel
  libXext-devel libXvMC-devel libxcb-devel lame-devel libtheora-devel
  libvorbis-devel x264-devel xvidcore-devel jack-devel SDL2-devel
  librtmp-devel libmodplug-devel gnutls-devel

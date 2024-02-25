@@ -34,7 +34,7 @@ case "$XBPS_TARGET_MACHINE" in
 		;;
 	x86_64*)
 		hostmakedepends+=" nasm"
-		build_options_default+=" vaapi vdpau nvcodec onevpl"
+		build_options_default+=" vaapi onevpl"
 		;;
 	ppc64*) build_options_default+=" vaapi vdpau";;
 	mips*) CFLAGS="-mnan=legacy";;
@@ -87,7 +87,7 @@ do_configure() {
 		--enable-libcdio --enable-version3 --enable-runtime-cpudetect \
 		--enable-libmp3lame --enable-libvorbis --enable-libxvid \
 		--enable-libx264 --enable-libvpx --enable-libtheora \
-		--enable-shared --enable-static --enable-libxcb \
+		--enable-shared --enable-static --disable-libxcb \
 		--enable-libpulse --enable-libfreetype --enable-libmodplug \
 		--enable-libspeex --enable-libcelt --enable-libass \
 		--enable-libopus --enable-librtmp --enable-libjack \
@@ -105,7 +105,10 @@ do_configure() {
 		$(vopt_enable sofa libmysofa) \
 		$(vopt_enable onevpl libvpl) \
 		$(vopt_enable nvcodec nvenc) \
-		$(vopt_enable nvcodec nvdec)
+		$(vopt_enable nvcodec nvdec) \
+    --disable-xlib \
+    --disable-libxcb-shm \
+    --disable-libxcb-xfixes
 }
 
 do_build() {

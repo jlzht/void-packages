@@ -1,0 +1,21 @@
+# Template file for 'csdr'
+pkgname=csdr
+version=0.15
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+makedepends="fftw-devel"
+depends="libfftw"
+short_desc="Simple DSP library and command-line tool for Software Defined Radio"
+maintainer="jlzht <jl.zht@proton.me>"
+license="BSD-3-Clause"
+homepage="https://github.com/ha7ilm/csdr"
+distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
+checksum=5273633dac6e7ed8d4abdbd8c5a9c466a3924e5853b18723701935067cdaa00b
+
+do_install() {
+  vbin csdr
+  vbin nmux
+  vcopy libcsdr.so usr/lib/libcsdr.so.0.15
+  vlicense ICLA.txt
+}

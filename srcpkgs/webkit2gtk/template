@@ -4,7 +4,8 @@ version=2.44.2
 revision=1
 build_style=cmake
 build_helper="gir"
-configure_args="-DPORT=GTK
+configure_args="
+ -DPORT=GTK
  -DCMAKE_LINKER=${XBPS_CROSS_TRIPLET}-gcc -DCMAKE_SKIP_RPATH=ON
  -DENABLE_JOURNALD_LOG=OFF -DUSE_WOFF2=ON
  -DENABLE_MINIBROWSER=$(vopt_if minibrowser ON OFF)
@@ -18,13 +19,14 @@ configure_args="-DPORT=GTK
  -DENABLE_BUBBLEWRAP_SANDBOX=$(vopt_if bubblewrap ON OFF)
  -DUSE_JPEGXL=OFF
  -DUSE_LIBBACKTRACE=OFF
- -DUSE_GTK4=OFF,
+ -DUSE_GTK4=OFF
+ -DENABLE_SPELLCHECK=OFF
+ -DUSE_GTK4=OFF
+ -DUSE_GBM=ON
  -DENABLE_PDFJS=OFF
  -DENABLE_API_TESTS=OFF
  -DENABLE_VIDEO=ON
- -DENABLE_GSTREAMER_WEBRTC=ON
- -DENABLE_GSTREAMER_TRANSCODER=ON
- -DENABLE_WEBDRIVER=ON
+ -DENABLE_GAMEPAD=OFF
  -DENABLE_WEBGL=ON
  -DENABLE_WEB_AUDIO=ON
  -DUSE_OPENGL_OR_ES=ON"
@@ -32,14 +34,14 @@ configure_args="-DPORT=GTK
 # Otherwise, they invoke /usr/bin/ccache /usr/lib/ccache/bin/$CC
 hostmakedepends="perl python3 pkg-config gperf flex ruby gettext glib-devel
  geoclue2 libharfbuzz which libpsl unifdef $(vopt_if gtk_doc 'gi-docgen')
- $(vopt_if wayland 'wayland-devel libxml2-devel')"
+ $(vopt_if wayland 'wayland-devel libxml2-devel') gstreamer1-devel"
 makedepends="at-spi2-core-devel libjpeg-turbo-devel libpng-devel
  harfbuzz-devel gst-plugins-base1-devel gst-plugins-bad1-devel sqlite-devel
- libsoup-devel libsoup3-devel libxslt-devel gnutls-devel icu-devel enchant2-devel
- dbus-glib-devel libwebp-devel gtk+3-devel gtk4-devel libgudev-devel
+ libsoup-devel libsoup3-devel libxslt-devel gnutls-devel icu-devel
+ dbus-glib-devel libwebp-devel gtk+3-devel libgudev-devel
  libsecret-devel ruby-devel geoclue2-devel libnotify-devel hyphen-devel
  woff2-devel freetype-devel libopenjpeg2-devel libavif-devel
- libmanette-devel libwpe-devel wpebackend-fdo-devel libepoxy-devel
+ libwpe-devel wpebackend-fdo-devel libepoxy-devel
  libgcrypt-devel libnuspell-devel libpsl-devel $(vopt_if x11 libXt-devel)
  $(vopt_if wayland 'MesaLib-devel libxkbcommon-devel wayland-devel wayland-protocols')"
 depends="gst-plugins-good1"
@@ -55,7 +57,7 @@ replaces="webkit2gtk-common>0"
 
 build_options="gir wayland x11 bubblewrap jit sampling_profiler minibrowser
  clang lto gtk_doc"
-build_options_default="gir wayland"
+build_options_default="gir bubblewrap wayland"
 
 desc_option_bubblewrap="Enable bubblewrap sandbox"
 desc_option_jit="JavaScript JIT (Only some architectures)"
@@ -172,7 +174,7 @@ post_configure() {
 }
 
 post_build() {
-	(cd webkit2gtk-40 && NINJA_STATUS="[2/3][%f/%t] " do_build)
+	(cd webkit2gtk-40 && NINJA_STATUS="[%f/%t] " do_build)
 }
 
 post_install() {

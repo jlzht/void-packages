@@ -9,7 +9,7 @@ configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
  -Dosmesa=true -Dgles2=enabled -Dglx=disabled -Ddri3=enabled
  -Dlmsensors=enabled -Dplatforms=wayland
  -Dllvm=enabled -Db_lto=false -Dcpp_std=gnu++17"
-hostmakedepends="gettext flex pkg-config python3-Mako glslang llvm${_llvmver}
+hostmakedepends="gettext flex pkg-config python3-Mako glslang llvm${_llvmver} llvm17-devel
  $(vopt_if wayland 'wayland-protocols wayland-devel')"
 makedepends="elfutils-devel expat-devel libdrm-devel
  libffi-devel libva-devel ncurses-devel zlib-devel
@@ -54,7 +54,6 @@ _vulkan_drivers=" -Dvulkan-drivers="
 case "$XBPS_TARGET_MACHINE" in
 	armv5*|mips*) ;;
 	*)
-		_have_nv=yes
 		_have_amd=yes
 		_have_hwdec=yes
 		_have_virgl=yes
@@ -65,9 +64,6 @@ esac
 # arm gets its own drivers (for mali, tegra etc.)
 case "$XBPS_TARGET_MACHINE" in
 	i686*|x86_64*)
-		_have_intel=no
-		_have_vmware=no
-		_have_nine=no
 		;;
 	armv[67]*|aarch64*)
 		_have_arm=yes
@@ -76,7 +72,6 @@ esac
 
 if [ "$_have_amd" ]; then
 	# amd cards can use clover
-	_have_opencl=yes
 	_have_vulkan=yes
 	_gallium_drivers+=",radeonsi"
 	_vulkan_drivers+=",amd"
